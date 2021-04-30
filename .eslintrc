@@ -1,0 +1,81 @@
+{
+  "extends": [
+    "yoast",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "env": {
+    "jest": true
+  },
+  "rules": {
+    // Let's try to enable this asap.
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "complexity": [
+      2,
+      8
+    ],
+    "@typescript-eslint/no-parameter-properties": [
+      2,
+      {
+        "allows": [
+          "protected readonly",
+          "private readonly"
+        ]
+      }
+    ],
+    "max-statements": [
+      2,
+      33
+    ],
+    // Doesn't work with Types
+    "new-cap": 0,
+    // This rule only applies when you're using objects that don't extend Object.prototype
+    "no-prototype-builtins": "off",
+    // Allow for context on array/object attributes.
+    "no-inline-comments": "off",
+    // Normal no-unused-vars doesn't work for TypeScript
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "error",
+    // Duplicate class members are overloads and are allowed in TypeScript
+    "no-dupe-class-members": "off",
+    // Normal indent doesn't work for TypeScript
+    "ident": "off",
+    "@typescript-eslint/indent": [
+      2,
+      "tab",
+      {
+        "SwitchCase": 1
+      }
+    ],
+    // Allow space before async arrow function
+    "space-before-function-paren": [
+      "error",
+      {
+        "anonymous": "never",
+        "named": "never",
+        "asyncArrow": "always"
+      }
+    ],
+    "valid-jsdoc": [
+      "error",
+      {
+        "prefer": {
+          "return": "return"
+        }
+      }
+    ]
+  },
+  // Stupid, but required for extending the `Yoast` eslint config.
+  "settings": {
+    "react": {
+      "version": "16.8"
+    }
+  }
+}
